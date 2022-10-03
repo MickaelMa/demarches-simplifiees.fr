@@ -167,7 +167,7 @@ class Champ < ApplicationRecord
   # attributes. So instead of the field index, this method uses the champ id; which gives us an independent and
   # predictable input name.
   def input_name
-    if parent_id
+    if parent_id && id != parent_id
       "#{parent.input_name}[champs_attributes][#{id}]"
     else
       "dossier[#{champs_attributes_accessor}][#{id}]"
